@@ -30,7 +30,7 @@
             </div>
             <div style="background: aliceblue">
                 <div class="container">
-                    <h1 class="display-3">Квестик</h1>
+                    <h1 class="container text-center">Квестик</h1>
                     <p class="lead">Во время прохождения данного квеста тебе предстоит ответить на несколько очень сложных вопросов, но я уверен, ты справишься!</p>
                     <p class="lead">Кстати, как твое имя?</p>
 <%--                <div class="form-group" style=""><input type="text" class="form-control"></div>--%>

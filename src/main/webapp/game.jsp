@@ -13,9 +13,15 @@
     </head>
 
     <body>
-        <div align="center">
-            <h3>Привет <%=request.getParameter("UserName")%>!</h3>
-        </div>
+        <div>
+            <div align="center">
+                <h3>Привет <%=request.getParameter("UserName")%>!</h3>
+            </div>
+
+            <div>
+                <jsp:include page="statistic.jsp"></jsp:include>
+            </div>
+    </div>
 
         <!-- JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
