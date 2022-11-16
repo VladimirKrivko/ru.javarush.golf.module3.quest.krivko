@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <jsp:include page="header.jsp"></jsp:include>
+        <jsp:include page="header.html"></jsp:include>
     </head>
 
     <body>
@@ -36,6 +36,6 @@
             </div>
         </div>
 
-        <jsp:include page="footer.jsp"></jsp:include>
+        <jsp:include page="footer.html"></jsp:include>
     </body>
 </html>

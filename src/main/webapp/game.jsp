@@ -1,31 +1,44 @@
+<%@ page import="ru.javarush.golf.quest.model.Question" %>
+<%@ page import="ru.javarush.golf.quest.model.GameQuest" %>
+<%@ page import="java.util.List" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%--<jsp:useBean id="sessionState" scope="session" type="ru.javarush.golf.quest.model.GameQuest"/>--%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <jsp:include page="header.html"></jsp:include>
+</head>
 
-        <title>Quest Game</title>
+<body>
+<div>
+    <div align="center">
+        <%
+            String textQuestion = (String) request.getAttribute("textQuestion");
+            List<String> answers = (List<String>) request.getAttribute("answers");
+            String correctlyAnswer = (String) request.getAttribute("correctlyAnswer");
+        %>
+        <%=textQuestion%>
 
-        <!-- CSS only -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-
-    </head>
-
-    <body>
+        <form method="GET" action="test-servlet"> <%-- здесь после ответа на вопрос редирект --%>
         <div>
-            <div align="center">
-                <h3>Привет <%=request.getParameter("UserName")%>!</h3>
-            </div>
+            <input type="radio" name="choice" value="1"> <%=answers.get(0)%> </input><br>
+            <input type="radio" name="choice" value="2"> <%=answers.get(1)%></input><br>
+            <input type="radio" name="choice" value="3"> <%=answers.get(2)%></input><br>
+            <input type="radio" name="choice" value="4"> <%=correctlyAnswer%></input><br>
 
-            <div>
-                <jsp:include page="statistic.jsp"></jsp:include>
-            </div>
+            <p align="center" colspan="2"><input type="submit" value="Ответить"/>
+        </div>
+        </form>
+
     </div>
+    <br><br>
+    <div>
+        <jsp:include page="statistic.jsp"></jsp:include>
+    </div>
+</div>
 
-        <!-- JavaScript Bundle with Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
-        </script>
-    </body>
+<jsp:include page="footer.html"></jsp:include>
+</body>
 </html>

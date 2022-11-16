@@ -18,6 +18,7 @@ public class GameServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         game = new GameQuest(new RepositoryQuestion());
+        currentQuestion = game.getNextQuestion();
     }
 
     @Override
@@ -28,6 +29,7 @@ public class GameServlet extends HttpServlet {
         GameQuest quest = new GameQuest(new RepositoryQuestion());
 
         String userName = request.getParameter("UserName");
+        currentSession.setAttribute("UserName", userName);  //Внес имя пользователя в сессию
 
         getQuestion(response);
 //        response.sendRedirect("/game.jsp");
