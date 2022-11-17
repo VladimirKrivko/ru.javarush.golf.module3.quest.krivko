@@ -13,7 +13,7 @@ public class NameVerificationServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         String userName = request.getParameter("userName");
-        String redirect = "test.jsp";
+        String redirect = "index.jsp";
         if (userName!= null && !userName.isEmpty() && !userName.isBlank()) {
             redirect = "/test-servlet";
             session.setAttribute("userName", userName);
