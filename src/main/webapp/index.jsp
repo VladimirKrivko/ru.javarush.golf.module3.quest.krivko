@@ -12,9 +12,6 @@
             <p class="lead">Во время прохождения данного квеста тебе предстоит ответить на несколько очень сложных
                 вопросов, но я уверен, ты справишься!</p>
             <p class="lead">Кстати, как твое имя?</p>
-            <%--                <div class="form-group" style=""><input type="text" class="form-control"></div>--%>
-            <%--                    <input type="text" name="UserName" class="form-control form-control-lg" placeholder="Введите ваше имя">--%>
-            <%--                    <p><a class="btn btn-lg btn-success" onclick="location.href='/game'" role="button">Начать квест</a></p>--%>
             <form method="get" action="name-verify">
                 Name: <input type="text" name="userName" placeholder="Введи свое имя"><BR><BR>
                 <CENTER><input type="submit" value="Начать"></CENTER>

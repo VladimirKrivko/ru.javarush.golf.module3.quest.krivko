@@ -1,10 +1,8 @@
 <%@ page import="ru.javarush.golf.quest.model.Question" %>
 <%@ page import="ru.javarush.golf.quest.model.GameQuest" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.Arrays" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<%--<jsp:useBean id="sessionState" scope="session" type="ru.javarush.golf.quest.model.GameQuest"/>--%>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -15,26 +13,31 @@
 <div>
     <div align="center">
         <%
-            String textQuestion = (String) request.getAttribute("textQuestion");
-            List<String> answers = (List<String>) request.getAttribute("answers");
-            String correctlyAnswer = (String) request.getAttribute("correctlyAnswer");
+            GameQuest game = (GameQuest) session.getAttribute("game");
+            Question currentQuestion = (Question) session.getAttribute("currentQuestion");
+            List<String> answers = currentQuestion.getAnswers();
+            session.setAttribute("answers", answers);
         %>
-        <%=textQuestion%>
 
-        <form method="GET" action="test-servlet"> <%-- здесь после ответа на вопрос редирект --%>
-        <div>
-            <input type="radio" name="choice" value="1"> <%=answers.get(0)%> </input><br>
-            <input type="radio" name="choice" value="2"> <%=answers.get(1)%></input><br>
-            <input type="radio" name="choice" value="3"> <%=answers.get(2)%></input><br>
-            <input type="radio" name="choice" value="4"> <%=correctlyAnswer%></input><br>
 
+        <h4>${currentQuestion.getTextQuestion()}</h4>
+        <form method="GET" action="/answer-verify">
+            <c:forEach items="${answers}" var="answer">
+                <div class="funkyradio">
+                    <div class="funkyradio-default">
+                        <input type="radio" name="choice" id="radio" value="${answer}" checked />
+                        <label for="radio">${answer}</label><br>
+                    </div>
+                </div>
+            </c:forEach>
             <p align="center" colspan="2"><input type="submit" value="Ответить"/>
-        </div>
-        </form>
+
+
 
     </div>
-    <br><br>
-    <div>
+
+    <div class="container" align="left">
+        <br><br>
         <jsp:include page="statistic.jsp"></jsp:include>
     </div>
 </div>
