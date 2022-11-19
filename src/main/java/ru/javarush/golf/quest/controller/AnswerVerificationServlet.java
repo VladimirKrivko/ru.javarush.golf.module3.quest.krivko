@@ -3,6 +3,7 @@ package ru.javarush.golf.quest.controller;
 import ru.javarush.golf.quest.model.GameQuest;
 import ru.javarush.golf.quest.model.Question;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,16 +25,17 @@ public class AnswerVerificationServlet extends HttpServlet {
 
         try {
             if (currentQuestion.isCorrectly(choice)) {
-
                 if (game.hasNextQuestion()) {
                     response.sendRedirect("/game");  // -переход затычка
                 } else {
-                    response.sendRedirect("/game-init");  // -переход затычка
+                    request.setAttribute("result", "win");
+                    request.getRequestDispatcher("/final.jsp").forward(request,response);
                 }
             } else {
-                response.sendRedirect("/game-init");  // переход затычка
+                request.setAttribute("result", "lose");
+                request.getRequestDispatcher("/final.jsp").forward(request,response);
             }
-        } catch (IOException e) {
+        } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }

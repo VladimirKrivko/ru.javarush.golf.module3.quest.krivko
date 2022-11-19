@@ -12,7 +12,7 @@ import java.io.IOException;
 
 @WebServlet(name = "GameInitServlet", value = "/game-init")
 public class GameInitServlet extends HttpServlet {
-
+    private Integer countGame;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         response.setContentType("text/html;charset=utf-8");
@@ -20,7 +20,12 @@ public class GameInitServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         GameQuest game = null;
         game = new GameQuest(new RepositoryQuestion());
+        game.resetIndexQuestion();
 
+        if(countGame == null){
+            countGame = 1;
+        }
+        session.setAttribute("countGame", countGame++);
         session.setAttribute("game", game);
         // TODO: подумать пощать ли в сессию данные о вопросе и пр. именно здесь или в game.jsp ?!
 //        session.setAttribute("currentQuestion", game.getNextQuestion());

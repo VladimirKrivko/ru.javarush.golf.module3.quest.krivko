@@ -33,25 +33,19 @@ public class GameQuest implements Serializable {
         return FINAL_LOST_MESSAGE;
     }
 
-    // TODO: переписать логику на ID
-
     public boolean hasNextQuestion() {
         if (indexQuestion < questions.size()) {
-            indexQuestion++;
             return true;
         }
-//        return !questions.isEmpty();
-        indexQuestion = 0;
         return false;
     }
 
     public Question getNextQuestion() {
-        return questions.get(indexQuestion);
-//        return questions.remove(0);
+        return questions.get(indexQuestion++);
     }
 
-    public Integer getIndexQuestion() {
-        return indexQuestion;
+    public void resetIndexQuestion() {
+        indexQuestion = 0;
     }
 
     public void chkIndexQuestion(Integer currentIndex) {

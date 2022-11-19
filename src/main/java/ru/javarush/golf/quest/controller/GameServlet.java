@@ -19,15 +19,14 @@ public class GameServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         HttpSession session = request.getSession(false);
-
         GameQuest game = (GameQuest) session.getAttribute("game");
 
-        session.removeAttribute("currentQuestion");
-
-        game.chkIndexQuestion(game.getIndexQuestion());
-        Question currentQuestion = game.getNextQuestion();
-
-        session.setAttribute("currentQuestion", currentQuestion);
-        response.sendRedirect("/game.jsp");
+        if (game.hasNextQuestion()) {
+            Question currentQuestion = game.getNextQuestion();
+            session.setAttribute("currentQuestion", currentQuestion);
+            response.sendRedirect("/game.jsp");
+        } else {
+            response.sendRedirect("/index.jsp"); //!
+        }
     }
 }

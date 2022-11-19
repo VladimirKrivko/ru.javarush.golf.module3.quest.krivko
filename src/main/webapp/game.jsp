@@ -17,7 +17,10 @@
             Question currentQuestion = (Question) session.getAttribute("currentQuestion");
             List<String> answers = currentQuestion.getAnswers();
             session.setAttribute("answers", answers);
+
         %>
+
+
 
 
         <h4>${currentQuestion.getTextQuestion()}</h4>

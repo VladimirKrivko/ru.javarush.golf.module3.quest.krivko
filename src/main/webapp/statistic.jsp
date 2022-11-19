@@ -1,5 +1,6 @@
 <div>
-    UserName: <%= session.getAttribute("userName")%> <br> <%-- имя юзера хранится в сессии --%>
+    UserName: <%= session.getAttribute("userName")%> <br>
+    Number of game: <%= session.getAttribute("countGame")%> <br>
     Server: <%= request.getServerName()%> <br>
     port: <%= request.getServerPort()%> <br>
     address: <%= request.getRemoteAddr()%> <br>
