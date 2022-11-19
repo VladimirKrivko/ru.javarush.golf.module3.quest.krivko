@@ -20,13 +20,12 @@ public class AnswerVerificationServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         GameQuest game = (GameQuest) session.getAttribute("game");
         Question currentQuestion = (Question) session.getAttribute("currentQuestion");
-
         String choice = request.getParameter("choice");
 
         try {
             if (currentQuestion.isCorrectly(choice)) {
                 if (game.hasNextQuestion()) {
-                    response.sendRedirect("/game");  // -переход затычка
+                    response.sendRedirect("/game");
                 } else {
                     request.setAttribute("result", "win");
                     request.getRequestDispatcher("/final.jsp").forward(request,response);

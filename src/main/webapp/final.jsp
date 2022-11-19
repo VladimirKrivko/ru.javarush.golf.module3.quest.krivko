@@ -19,7 +19,6 @@
     }
   %>
 
-
   <div>
     <div>
       <h1 align="center"><%=message%></h1>
@@ -36,6 +35,6 @@
       <jsp:include page="statistic.jsp"></jsp:include>
     </div>
   </div>
-<jsp:include page="footer.html"></jsp:include>
+  <jsp:include page="footer.html"></jsp:include>
 </body>
 </html>

@@ -1,11 +1,9 @@
 package ru.javarush.golf.quest.model;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class Question implements Serializable {
+public class Question {
 
-    private static final long serialVersionUID = 1L;
     private final String textQuestion;
     private final String correctlyAnswer;
     private final List<String> answers;

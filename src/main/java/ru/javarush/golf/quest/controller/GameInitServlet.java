@@ -17,23 +17,21 @@ public class GameInitServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         response.setContentType("text/html;charset=utf-8");
 
-        HttpSession session = request.getSession(false);
-        GameQuest game = null;
-        game = new GameQuest(new RepositoryQuestion());
+        GameQuest game = new GameQuest(new RepositoryQuestion());
         game.resetIndexQuestion();
 
         if(countGame == null){
             countGame = 1;
         }
+
+        HttpSession session = request.getSession(false);
+
         session.setAttribute("countGame", countGame++);
         session.setAttribute("game", game);
-        // TODO: подумать пощать ли в сессию данные о вопросе и пр. именно здесь или в game.jsp ?!
-//        session.setAttribute("currentQuestion", game.getNextQuestion());
         try {
             response.sendRedirect("/game");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 }

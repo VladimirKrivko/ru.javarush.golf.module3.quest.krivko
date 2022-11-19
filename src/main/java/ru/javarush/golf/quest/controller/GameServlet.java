@@ -26,7 +26,7 @@ public class GameServlet extends HttpServlet {
             session.setAttribute("currentQuestion", currentQuestion);
             response.sendRedirect("/game.jsp");
         } else {
-            response.sendRedirect("/index.jsp"); //!
+            response.sendRedirect("/index.jsp");
         }
     }
 }
