@@ -1,7 +1,6 @@
 .idea/
 .mvn/
 target/
-readME_image/
 *.iws
 *.iml
 *.ipr
