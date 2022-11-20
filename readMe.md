@@ -31,17 +31,17 @@ _*src/main/webapp/index.jsp*_
 
 ## Скриншоты:
 
-<p align="center"><img  src="readME_image/welcome-page.png" width="80%"></p>
+<p align="center"><img  src="readme_assets/welcome-page.png" width="80%"></p>
 
 ---
-<p align="center"><img  src="readME_image/quiz-page.png" width="80%"></p>
+<p align="center"><img  src="readme_assets/quiz-page.png" width="80%"></p>
 
 ---
-<p align="center"><img  src="readME_image/fin-page.png" width="80%"></p>
+<p align="center"><img  src="readme_assets/fin-page.png" width="80%"></p>
 
 ---
 <h4 align="center">Перед погружением в код, рекомендую взять дежурный противогаз 😁.</h3>
-<p align="center"><img  src="readME_image/gasmask.jpg" width="50%"></p>
+<p align="center"><img  src="readme_assets/gasmask.jpg" width="50%"></p>
 
 <h3 align="center"> 😵 Спасибо за внимание! 🤘 </h3>
 
