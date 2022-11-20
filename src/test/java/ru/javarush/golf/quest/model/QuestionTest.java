@@ -9,38 +9,38 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class QuestionTest {
-    Question question = new Question("testTextQuestion", "testCorrectlyAnswer", List.of("testAnswer1", "testAnswer2", "testCorrectlyAnswer"));
+    Question question = new Question("testTextQuestion", "testCorrectlyAnswer", List.of("testAnswer1", "testAnswer2", "testCorrectlyAnswer")); // objectUnderTest
 
     @Test
-    void getTextQuestion() {
+    void getTextQuestionShouldBeReturnTextQuestion() {
         String actual = question.getTextQuestion();
         String expected = "testTextQuestion";
         assertEquals(expected, actual);
     }
 
     @Test
-    void getCorrectlyAnswer() {
+    void getCorrectlyAnswerShouldBeReturnTextCorrectlyAnswerToLowerCase() {
         String actual = question.getCorrectlyAnswer();
         String expected = "testcorrectlyanswer";
         assertEquals(expected, actual);
     }
 
     @Test
-    void getAnswers() {
+    void getAnswersShouldBeReturnListAnswers() {
         List<String> actual = question.getAnswers();
         List<String> expected = List.of("testAnswer1", "testAnswer2", "testCorrectlyAnswer");
         assertEquals(expected, actual);
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"correcto", "noCoReCto", "123kuKareKto", " koko .& jacoco"})
-    void isFalseCorrectly(String text) {
+    @ValueSource(strings = {"correto", "noCoReCto", "123kuKareKto", " koko .& jacoco"})
+    void isCorrectlyShouldBeReturnFalseIfParameterTextIncorrect(String text) {
         boolean actual = question.isCorrectly(text);
         assertFalse(actual);
     }
 
     @Test
-    void isTrueCorrectly() {
+    void isCorrectlyShouldBeReturnTrueIfParameterTextCorrect() {
         String expected = "testCorrectlyAnswer";
         boolean actual = question.isCorrectly(expected);
         assertTrue(actual);

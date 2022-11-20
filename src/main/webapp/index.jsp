@@ -9,7 +9,7 @@
     <div style="background: aliceblue">
         <div class="container">
             <h1 class="container text-center">Викторина!</h1> <br>
-            <p class="lead">Во время прохождения данного квеста тебе предстоит ответить на несколько очень сложных
+            <p class="lead"> Во время прохождения данного квеста тебе предстоит ответить на несколько очень сложных
                 вопросов, но я уверен, ты справишься!</p>
             <p class="lead">Кстати, как твое имя?</p>
             <form method="get" action="name-verify">

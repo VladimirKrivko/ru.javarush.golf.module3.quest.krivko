@@ -16,7 +16,7 @@ public class Question {
 
     public String getTextQuestion() {
         return textQuestion;
-    } // 1 usage in game.jsp
+    } // +1 usage in game.jsp
 
     public String getCorrectlyAnswer() {
         return correctlyAnswer.toLowerCase();
