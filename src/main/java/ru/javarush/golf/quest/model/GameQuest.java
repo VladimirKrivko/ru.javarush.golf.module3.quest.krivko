@@ -8,9 +8,9 @@ public class GameQuest {
 
     private final List<Question> questions;
 
-    private static final String FINAL_WIN_MESSAGE = "Victory!";
+    private final String FINAL_WIN_MESSAGE = "Victory!";
 
-    private static final String FINAL_LOST_MESSAGE = "You lost.";
+    private final String FINAL_LOST_MESSAGE = "You lost.";
 
     private Integer indexQuestion = 0;
 
@@ -32,6 +32,14 @@ public class GameQuest {
 
     public Question getNextQuestion() {
         return questions.get(indexQuestion++);
+    }
+
+    public Integer getIndexQuestion() {
+        return indexQuestion;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
     }
 
     public void resetIndexQuestion() {

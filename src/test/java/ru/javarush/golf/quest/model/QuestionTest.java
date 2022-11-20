@@ -9,7 +9,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class QuestionTest {
-    Question question = new Question("testTextQuestion", "testCorrectlyAnswer", List.of("testAnswer1", "testAnswer2", "testCorrectlyAnswer")); // objectUnderTest
+
+    private final Question question = new Question("testTextQuestion", "testCorrectlyAnswer", List.of("testAnswer1", "testAnswer2", "testCorrectlyAnswer"));
 
     @Test
     void getTextQuestionShouldBeReturnTextQuestion() {

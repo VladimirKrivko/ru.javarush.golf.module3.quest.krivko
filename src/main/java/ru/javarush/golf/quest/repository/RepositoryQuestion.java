@@ -2,7 +2,8 @@ package ru.javarush.golf.quest.repository;
 
 import ru.javarush.golf.quest.model.Question;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RepositoryQuestion {
 
