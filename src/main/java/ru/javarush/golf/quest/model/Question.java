@@ -1,6 +1,7 @@
 package ru.javarush.golf.quest.model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Question {
 
@@ -16,7 +17,7 @@ public class Question {
 
     public String getTextQuestion() {
         return textQuestion;
-    } // +1 usage in game.jsp
+    }
 
     public String getCorrectlyAnswer() {
         return correctlyAnswer.toLowerCase();
@@ -28,5 +29,18 @@ public class Question {
 
     public boolean isCorrectly(String userAnswer) {
         return getCorrectlyAnswer().equals(userAnswer.toLowerCase());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {return true;}
+        if (o == null || getClass() != o.getClass()) {return false;}
+        Question question = (Question) o;
+        return textQuestion.equals(question.textQuestion) && correctlyAnswer.equals(question.correctlyAnswer) && answers.equals(question.answers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(textQuestion, correctlyAnswer, answers);
     }
 }

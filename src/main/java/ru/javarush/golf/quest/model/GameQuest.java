@@ -1,29 +1,15 @@
 package ru.javarush.golf.quest.model;
 
-import ru.javarush.golf.quest.repository.RepositoryQuestion;
-
 import java.util.List;
 
 public class GameQuest {
-
+    public static final String FINAL_WIN_MESSAGE = "Victory!";
+    public static final String FINAL_LOST_MESSAGE = "You lost.";
     private final List<Question> questions;
-
-    private final String FINAL_WIN_MESSAGE = "Victory!";
-
-    private final String FINAL_LOST_MESSAGE = "You lost.";
-
     private Integer indexQuestion = 0;
 
-    public GameQuest(RepositoryQuestion repositoryQuestion) {
-        this.questions = repositoryQuestion.getQuestions();
-    }
-
-    public String getFinalWinMessage() {
-        return FINAL_WIN_MESSAGE;
-    }
-
-    public String getFinalLostMessage() {
-        return FINAL_LOST_MESSAGE;
+    public GameQuest(List<Question> questions) {
+        this.questions = questions;
     }
 
     public boolean hasNextQuestion() {
@@ -36,10 +22,6 @@ public class GameQuest {
 
     public Integer getIndexQuestion() {
         return indexQuestion;
-    }
-
-    public List<Question> getQuestions() {
-        return questions;
     }
 
     public void resetIndexQuestion() {

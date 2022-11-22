@@ -7,7 +7,7 @@ import java.util.List;
 
 public class RepositoryQuestion {
 
-    private static final List<Question> QUESTIONS = new ArrayList<>();
+    public static final List<Question> QUESTIONS = new ArrayList<>();
 
     static {
         // создание и наполнение списка вопросами
@@ -18,7 +18,7 @@ public class RepositoryQuestion {
         QUESTIONS.add(new Question("Как называется сумка у туриста?", "рюкзак", List.of("рюкзак", "авоська", "барсетка", "портфель")));
     }
 
-    public List<Question> getQuestions() {
-        return QUESTIONS;
+    private RepositoryQuestion() {
+        throw new IllegalStateException("Utility class");
     }
 }

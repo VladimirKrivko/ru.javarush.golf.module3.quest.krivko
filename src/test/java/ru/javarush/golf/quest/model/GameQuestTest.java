@@ -1,54 +1,46 @@
 package ru.javarush.golf.quest.model;
 
 import org.junit.jupiter.api.Test;
-import ru.javarush.golf.quest.repository.RepositoryQuestion;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GameQuestTest {
-
-    GameQuest game = new GameQuest(new RepositoryQuestion()); // objectUnderTest
-
-    @Test
-    void getFinalWinMessageShouldBeReturnTextFinalWinMessage() {
-        String actual = game.getFinalWinMessage();
-        String expected = "Victory!";
-        assertEquals(expected, actual);
-    }
+    private final List<Question> questions = List.of(
+            new Question("testTextQuestion0", "testCorrectlyAnswer0", List.of("testAnswer1321", "testAnswer278", "testCorrectlyAnswer0")),
+            new Question("testTextQuestion1", "testCorrectlyAnswer1", List.of("testAnswer1231", "testAnswer213", "testCorrectlyAnswer1")),
+            new Question("testTextQuestion2", "testCorrectlyAnswer2", List.of("testAnswer7771", "testAnswer254", "testCorrectlyAnswer2"))
+            );
+    private final GameQuest game = new GameQuest(questions);
 
     @Test
-    void getFinalLostMessageShouldBeReturnTextFinalLostMessage() {
-        String actual = game.getFinalLostMessage();
-        String expected = "You lost.";
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void hasNextQuestionShouldBeReturnTrueWhenNextQuestionIsPresent() {
+    void hasNextQuestionShouldBeReturnTrueIfCurrentIndexQuestionLessSizeListQuestion() {
+        boolean expected = true;
         boolean actual = game.hasNextQuestion();
-        assertTrue(actual);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void getNextQuestion() {
-        Integer indexQuestion = game.getIndexQuestion();
-        int sizeCollection = game.getQuestions().size();
-        assertTrue(indexQuestion < sizeCollection);
+    void getNextQuestionShouldBeReturnNextQuestionFromGameQuest() {
+        Question expected = new Question("testTextQuestion0", "testCorrectlyAnswer0", List.of("testAnswer1321", "testAnswer278", "testCorrectlyAnswer0"));
+        Question actual = game.getNextQuestion();
+        assertEquals(expected, actual);
     }
 
     @Test
-    void getNextQuestionIncrementCurrentIndexQuestion() {
+    void getNextQuestionShouldBeIncrementCurrentIndexQuestion() {
         game.getNextQuestion();
+        Integer expected = 1;
         Integer actual = game.getIndexQuestion();
-        assertEquals(1, actual);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void resetIndexQuestionSetsValueOfTheVariableToZero() {
-        game.getNextQuestion();
-        game.hasNextQuestion();
-        game.resetIndexQuestion();
+    void resetIndexQuestionSetsValueOfTheIndexQuestionVariableToZero() {
+        game.getNextQuestion();     //  indexQuestion = 1;
+        game.resetIndexQuestion();  //  indexQuestion = 0;
+
         Integer actual = game.getIndexQuestion();
         Integer expected = 0;
         assertEquals(expected, actual);

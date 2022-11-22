@@ -101,7 +101,6 @@
                                 <rule>
                                     <element>BUNDLE</element>
                                     <excludes>
-                                        <exclude>*Test</exclude>
                                         <exclude>*Servlet</exclude>
                                     </excludes>
                                     <limits>

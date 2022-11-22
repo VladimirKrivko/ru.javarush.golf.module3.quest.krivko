@@ -16,7 +16,7 @@ public class GameInitServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         response.setContentType("text/html;charset=utf-8");
 
-        GameQuest game = new GameQuest(new RepositoryQuestion());
+        GameQuest game = new GameQuest(RepositoryQuestion.QUESTIONS);
         game.resetIndexQuestion();
 
         HttpSession session = request.getSession(false);

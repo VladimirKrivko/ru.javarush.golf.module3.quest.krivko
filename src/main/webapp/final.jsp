@@ -13,9 +13,9 @@
     String result = (String) request.getAttribute("result");
     String message;
     if (result.equals("win")) {
-      message = game.getFinalWinMessage();
+      message = GameQuest.FINAL_WIN_MESSAGE;
     } else {
-      message = game.getFinalLostMessage();
+      message = GameQuest.FINAL_LOST_MESSAGE;
     }
   %>
 
