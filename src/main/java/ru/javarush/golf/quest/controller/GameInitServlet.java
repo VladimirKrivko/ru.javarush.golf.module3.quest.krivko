@@ -12,7 +12,6 @@ import java.io.IOException;
 
 @WebServlet(name = "GameInitServlet", value = "/game-init")
 public class GameInitServlet extends HttpServlet {
-    private Integer countGame;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         response.setContentType("text/html;charset=utf-8");
@@ -20,13 +19,15 @@ public class GameInitServlet extends HttpServlet {
         GameQuest game = new GameQuest(new RepositoryQuestion());
         game.resetIndexQuestion();
 
+        HttpSession session = request.getSession(false);
+        Integer countGame = (Integer) session.getAttribute("countGame");
+
         if(countGame == null){
-            countGame = 1;
+            session.setAttribute("countGame", 1);
+        } else {
+            session.setAttribute("countGame", ++countGame);
         }
 
-        HttpSession session = request.getSession(false);
-
-        session.setAttribute("countGame", countGame++);
         session.setAttribute("game", game);
         try {
             response.sendRedirect("/game");

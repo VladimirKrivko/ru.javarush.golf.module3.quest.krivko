@@ -23,7 +23,7 @@ public class NameVerificationServlet extends HttpServlet {
         }
 
         try {
-            if (userName == null || userName.isEmpty() || userName.isBlank()) {
+            if (userName == null || userName.isBlank()) {
                 request.getRequestDispatcher(redirect).forward(request, response);
             } else {
                 redirect = "/game-init";
