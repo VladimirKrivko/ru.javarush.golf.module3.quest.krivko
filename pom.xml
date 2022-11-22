@@ -92,7 +92,7 @@
                         </goals>
                     </execution>
                     <execution>
-                        <id>jacoco-check</id>
+                        <id>default-check</id>
                         <goals>
                             <goal>check</goal>
                         </goals>
@@ -100,19 +100,11 @@
                             <rules>
                                 <rule>
                                     <element>BUNDLE</element>
-                                    <excludes>
-                                        <exclude>*Servlet</exclude>
-                                    </excludes>
                                     <limits>
                                         <limit>
-                                            <counter>CLASS</counter>
+                                            <counter>COMPLEXITY</counter>
                                             <value>COVEREDRATIO</value>
                                             <minimum>0.80</minimum>
-                                        </limit>
-                                        <limit>
-                                            <counter>CLASS</counter>
-                                            <value>MISSEDCOUNT</value>
-                                            <maximum>0</maximum>
                                         </limit>
                                     </limits>
                                 </rule>
