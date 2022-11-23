@@ -33,10 +33,16 @@ public class Question {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {return true;}
-        if (o == null || getClass() != o.getClass()) {return false;}
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Question question = (Question) o;
-        return textQuestion.equals(question.textQuestion) && correctlyAnswer.equals(question.correctlyAnswer) && answers.equals(question.answers);
+        return  textQuestion.equals(question.textQuestion) &&
+                correctlyAnswer.equals(question.correctlyAnswer) &&
+                answers.equals(question.answers);
     }
 
     @Override

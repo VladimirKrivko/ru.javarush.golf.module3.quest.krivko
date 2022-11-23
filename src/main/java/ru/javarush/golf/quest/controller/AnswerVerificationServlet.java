@@ -14,7 +14,7 @@ import java.io.IOException;
 @WebServlet(name = "AnswerVerificationServlet", value = "/answer-verify")
 public class AnswerVerificationServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html;charset=utf-8");
 
         HttpSession session = request.getSession(false);
@@ -22,20 +22,16 @@ public class AnswerVerificationServlet extends HttpServlet {
         Question currentQuestion = (Question) session.getAttribute("currentQuestion");
         String choice = request.getParameter("choice");
 
-        try {
-            if (currentQuestion.isCorrectly(choice)) {
-                if (game.hasNextQuestion()) {
-                    response.sendRedirect("/game");
-                } else {
-                    request.setAttribute("result", "win");
-                    request.getRequestDispatcher("/final.jsp").forward(request,response);
-                }
+        if (currentQuestion.isCorrectly(choice)) {
+            if (game.hasNextQuestion()) {
+                response.sendRedirect("/game");
             } else {
-                request.setAttribute("result", "lose");
+                request.setAttribute("result", "win");
                 request.getRequestDispatcher("/final.jsp").forward(request,response);
             }
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
+        } else {
+            request.setAttribute("result", "lose");
+            request.getRequestDispatcher("/final.jsp").forward(request,response);
         }
     }
 }
