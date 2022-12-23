@@ -20,7 +20,7 @@ public class Question {
     }
 
     public String getCorrectlyAnswer() {
-        return correctlyAnswer.toLowerCase();
+        return correctlyAnswer;
     }
 
     public List<String> getAnswers() {
@@ -28,7 +28,7 @@ public class Question {
     }
 
     public boolean isCorrectly(String userAnswer) {
-        return getCorrectlyAnswer().equals(userAnswer.toLowerCase());
+        return getCorrectlyAnswer().equalsIgnoreCase(userAnswer);
     }
 
     @Override
