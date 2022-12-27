@@ -1,15 +1,29 @@
 package ru.javarush.golf.quest.model;
 
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
+@Entity
+@Table (name = "questions")
+
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
+@EqualsAndHashCode
+
+@ToString
 public class Question {
+    @Id
+    private String textQuestion;
+    @Column
+    private String correctlyAnswer;
+    @Column (table = "answers")
+    @ElementCollection
+    private List<String> answers = new ArrayList<>(4);
 
-    private final String textQuestion;
-    private final String correctlyAnswer;
-    private final List<String> answers;
-
-    public Question(String textQuestion, String correctlyAnswer, List<String> answers) {
+    /*public Question(String textQuestion, String correctlyAnswer, List<String> answers) {
         this.textQuestion = textQuestion;
         this.answers = answers;
         this.correctlyAnswer = correctlyAnswer;
@@ -25,13 +39,13 @@ public class Question {
 
     public List<String> getAnswers() {
         return answers;
-    }
+    }*/
 
     public boolean isCorrectly(String userAnswer) {
         return getCorrectlyAnswer().equalsIgnoreCase(userAnswer);
     }
 
-    @Override
+   /* @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -48,5 +62,5 @@ public class Question {
     @Override
     public int hashCode() {
         return Objects.hash(textQuestion, correctlyAnswer, answers);
-    }
+    }*/
 }
